@@ -52,7 +52,6 @@ export default {
         completeSignIn:false,
         specialities : "",
         universities : "",
-        formDataSign : "",
     }
   },
   methods: {
@@ -60,12 +59,12 @@ export default {
     SignIn() {
         //router.push('/test');
         axios.post(this.$store.state.URLAPI+'/createStudent',{
-          "email":this.formDataSign.email.toString(),
-          "firstname":this.formDataSign.firstname.toString(),
-          "lastname":this.formDataSign.lastname.toString(),
+          "email":this.formDataSign.email,
+          "firstname":this.formDataSign.firstname,
+          "lastname":this.formDataSign.lastname,
           "university":this.formDataSign.university,
           "speciality":this.formDataSign.speciality,
-          "password":this.formDataSign.password.toString()
+          "password":this.formDataSign.password
         }).then(() => {
           this.completeSignIn =true;
           router.go();
@@ -76,7 +75,6 @@ export default {
   beforeCreate() {
     axios.get(this.$store.state.URLAPI+'/university').then(response => this.universities = (response.data));
     axios.get(this.$store.state.URLAPI+'/speciality').then(response => this.specialities = (response.data));
-    this.formDataSign="";
   },
 
 };
