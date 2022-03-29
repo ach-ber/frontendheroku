@@ -1,7 +1,7 @@
 <template>
   
   <div class="home">
-    <h1>Retrouvez tous les avis</h1>
+    <h1>Retrouvez tous less avis</h1>
     
     <SearchBar/>
     <section>
@@ -59,7 +59,7 @@ section {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  background-color: red; /* #f6f8fe;*/
+  background-color: #f6f8fe;
   padding-bottom: 40px;
 }
 section div {
