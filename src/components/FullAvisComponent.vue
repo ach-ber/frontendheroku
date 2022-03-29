@@ -12,6 +12,7 @@
       <img :src="items[4].icon">
     </div>
     <a :href="lienmail" ><img src="@/assets/EmailIcon.png">Contacter</a>
+    <p>{{img()}}</p>
   </article>
 </template>
 
@@ -21,28 +22,47 @@
 export default {
   name: 'FullAvisComponent',
   props: ['id','avis','note','date','speciality','university','company','title','email'],
-
   data() {
     return {
        lienmail:"mailto:"+this.email,
        dateavis:'',
-       items:[],
+       items:[{title:'fullstar',icon:require('@/assets/starFull.png')},
+       {title:'fullstar',icon:require('@/assets/starFull.png')},
+       {title:'fullstar',icon:require('@/assets/starFull.png')},
+       {title:'fullstar',icon:require('@/assets/starFull.png')},
+       {title:'fullstar',icon:require('@/assets/starFull.png')}],
+    }
+  },
+  methods: {
+    img() {
+      for (let i = 1; i < 6; i++) {
+      if(this.note - 2*i>=0) {
+        this.items[i-1]={ title: 'fullstar',  icon: require('@/assets/starFull.png') };
+      }
+      else if (this.note - ((2*i)-1)>=0) {
+        this.items[i-1]={ title: 'halfstar',  icon: require('@/assets/starHalf.png') };
+      }
+      else {
+        this.items[i-1]={ title: 'emptystar',  icon: require('@/assets/starEmpty.png') };
+      }
+    }
     }
   },
 
-  created() {
+  mounted() {
     for (let i = 1; i < 6; i++) {
       if(this.note - 2*i>=0) {
-        this.items.push({ title: 'fullstar',  icon: require('@/assets/starFull.png') });
+        this.items[i-1]={ title: 'fullstar',  icon: require('@/assets/starFull.png') };
       }
       else if (this.note - ((2*i)-1)>=0) {
-        this.items.push({ title: 'halfstar', icon: require('@/assets/starHalf.png') });
+        this.items[i-1]={ title: 'halfstar',  icon: require('@/assets/starHalf.png') };
       }
       else {
-        this.items.push({ title: 'emptystar', icon: require('@/assets/starEmpty.png') });
+        this.items[i-1]={ title: 'emptystar',  icon: require('@/assets/starEmpty.png') };
       }
     }
   }
+
 };
 </script>
 
