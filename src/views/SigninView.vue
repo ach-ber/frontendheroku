@@ -68,15 +68,15 @@ export default {
           "password":this.formData.password.toString()
         }).then(() => {
           this.completeSignIn =true;
-          this.$formkit.reset('formSignIn');
           router.go();
         })
     }
   },
 
   beforeCreate() {
-    axios.get(this.$store.state.URLAPI+'/university').then(response => this.universities = (response.data))
-    axios.get(this.$store.state.URLAPI+'/speciality').then(response => this.specialities = (response.data))
+    axios.get(this.$store.state.URLAPI+'/university').then(response => this.universities = (response.data));
+    axios.get(this.$store.state.URLAPI+'/speciality').then(response => this.specialities = (response.data));
+    this.formData="";
   },
 
 };
