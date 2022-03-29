@@ -25,7 +25,7 @@
 const axios = require("axios");
 
 export default {
-  name: 'SigninView',
+  name: 'SigninViewBis',
   components: {
 
   },

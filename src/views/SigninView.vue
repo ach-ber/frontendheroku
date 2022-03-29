@@ -2,7 +2,7 @@
   <section>
     
     <div class="success" v-if="completeSignIn">Submitted successfully!</div>
-    <FormKit id="formSignIn" v-model="formData" type="form" submit-label="SignIn" @submit="SignIn">
+    <FormKit id="formSignIn" v-model="formDataSign" type="form" submit-label="SignIn" @submit="SignIn">
       <h2>Sign In</h2>
       <FormKit name="email" label="Email address" validation="required|email|(500)email_exists" :validation-messages="{ email_exists: 'email adresse already used' }" :validation-rules="{ email_exists }" />
       <FormKit type="text" name="firstname" label="firstname" validation="required" />
@@ -43,7 +43,7 @@ import router  from '../router';
 const axios = require("axios");
 
 export default {
-  name: 'SigninViewBis',
+  name: 'SigninView',
   components: {
 
   },
@@ -52,7 +52,7 @@ export default {
         completeSignIn:false,
         specialities : "",
         universities : "",
-        formData : "",
+        formDataSign : "",
     }
   },
   methods: {
@@ -60,12 +60,12 @@ export default {
     SignIn() {
         //router.push('/test');
         axios.post(this.$store.state.URLAPI+'/createStudent',{
-          "email":this.formData.email.toString(),
-          "firstname":this.formData.firstname.toString(),
-          "lastname":this.formData.lastname.toString(),
-          "university":this.formData.university,
-          "speciality":this.formData.speciality,
-          "password":this.formData.password.toString()
+          "email":this.formDataSign.email.toString(),
+          "firstname":this.formDataSign.firstname.toString(),
+          "lastname":this.formDataSign.lastname.toString(),
+          "university":this.formDataSign.university,
+          "speciality":this.formDataSign.speciality,
+          "password":this.formDataSign.password.toString()
         }).then(() => {
           this.completeSignIn =true;
           router.go();
@@ -76,7 +76,7 @@ export default {
   beforeCreate() {
     axios.get(this.$store.state.URLAPI+'/university').then(response => this.universities = (response.data));
     axios.get(this.$store.state.URLAPI+'/speciality').then(response => this.specialities = (response.data));
-    this.formData="";
+    this.formDataSign="";
   },
 
 };
