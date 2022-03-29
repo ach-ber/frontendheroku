@@ -1,6 +1,6 @@
 <template>
   <article>
-    <p>{{dateavis.substring(0,10).replace('-','/').replace('-','/')}} | {{company}}</p>
+    <p>{{datetime}} | {{company}}</p>
     <h2>{{title}}</h2>
     <div><img src="@/assets/LocationIcon.png">{{ university }}<img src="@/assets/SpecialityIcon.png">{{ speciality }}</div>
     <p>{{avis}}|{{note}}</p>
@@ -30,6 +30,7 @@ export default {
        {title:'fullstar',icon:require('@/assets/starFull.png')},
        {title:'fullstar',icon:require('@/assets/starFull.png')},
        {title:'fullstar',icon:require('@/assets/starFull.png')}],
+       datetime:'',
     }
   },
   watch: {
@@ -45,7 +46,10 @@ export default {
         this.items[i-1]={ title: 'emptystar',  icon: require('@/assets/starEmpty.png') };
       }
     }
-    }
+    },
+  date() {
+    this.datetime = this.date.substring(0,10).replace('-','/').replace('-','/');
+  }
   },
   beforeMount() {
   }
