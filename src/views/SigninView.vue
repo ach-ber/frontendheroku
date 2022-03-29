@@ -52,7 +52,7 @@ export default {
         completeSignIn:false,
         specialities : "",
         universities : "",
-        formData : [],
+        formData : "",
     }
   },
   methods: {
