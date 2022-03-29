@@ -12,7 +12,6 @@
       <img :src="items[4].icon">
     </div>
     <a :href="lienmail" ><img src="@/assets/EmailIcon.png">Contacter</a>
-    <p>{{img()}}</p>
   </article>
 </template>
 
@@ -33,8 +32,8 @@ export default {
        {title:'fullstar',icon:require('@/assets/starFull.png')}],
     }
   },
-  methods: {
-    img() {
+  watch: {
+    note() {
       for (let i = 1; i < 6; i++) {
       if(this.note - 2*i>=0) {
         this.items[i-1]={ title: 'fullstar',  icon: require('@/assets/starFull.png') };
@@ -48,6 +47,8 @@ export default {
     }
     }
   },
+  beforeMount() {
+  }
 
 };
 </script>
