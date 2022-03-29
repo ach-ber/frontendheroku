@@ -34,7 +34,7 @@
 
 const company_exists = async function ({ value }) {
     let rep = [];
-    await axios.get('http://localhost:4000/api/company').then((response) => {
+    await axios.get('https://projetwebapi.herokuapp.com/api/company').then((response) => {
       rep = response.data;
     });
     for (let elt of rep) {

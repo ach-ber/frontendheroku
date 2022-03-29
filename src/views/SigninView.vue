@@ -20,7 +20,7 @@
 
 const email_exists = async function ({ value }) {
     let rep = [];
-    await axios.get('http://localhost:4000/api/studentemail').then((response) => {
+    await axios.get('https://projetwebapi.herokuapp.com/api/studentemail').then((response) => {
       rep = response.data;
     });
     for (let elt of rep) {

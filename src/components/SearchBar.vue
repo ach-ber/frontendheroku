@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <form action="http://localhost:4000/api/AccountView" method="post">
+    <form action="https://projetwebapi.herokuapp.com/api/AccountView" method="post">
       university
       <select v-model="formuniversity">
         <option v-for="university in universities" v-bind:value="university.value" :key="university.value" >{{ university.label }}</option>
