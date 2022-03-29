@@ -1,6 +1,6 @@
 <template>
   <article>
-    <p>{{date.substring(0,10).replace('-','/').replace('-','/')}} | {{company}}</p>
+    <p>{{dateavis.substring(0,10).replace('-','/').replace('-','/')}} | {{company}}</p>
     <h2>{{title}}</h2>
     <div><img src="@/assets/LocationIcon.png">{{ university }}<img src="@/assets/SpecialityIcon.png">{{ speciality }}</div>
     <p>{{avis}}|{{note}}</p>
@@ -21,15 +21,16 @@
 export default {
   name: 'FullAvisComponent',
   props: ['id','avis','note','date','speciality','university','company','title','email'],
+
   data() {
     return {
-       items: [],
        lienmail:"mailto:"+this.email,
+       dateavis:'',
+       items:[],
     }
   },
-  methods: {
-  },
-  mounted() {
+
+  created() {
     for (let i = 1; i < 6; i++) {
       if(this.note - 2*i>=0) {
         this.items.push({ title: 'fullstar',  icon: require('@/assets/starFull.png') });

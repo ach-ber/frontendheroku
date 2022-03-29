@@ -36,6 +36,8 @@ export default {
       dataRecentavis:[],
       dataBestavis:[],
       urlAvis:'https://feheroku.herokuapp.com/#/AvisView/',
+      //http://localhost:8081/#/
+      //https://feheroku.herokuapp.com/#/
     }
   },
 
