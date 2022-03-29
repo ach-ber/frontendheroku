@@ -49,20 +49,6 @@ export default {
     }
   },
 
-  mounted() {
-    for (let i = 1; i < 6; i++) {
-      if(this.note - 2*i>=0) {
-        this.items[i-1]={ title: 'fullstar',  icon: require('@/assets/starFull.png') };
-      }
-      else if (this.note - ((2*i)-1)>=0) {
-        this.items[i-1]={ title: 'halfstar',  icon: require('@/assets/starHalf.png') };
-      }
-      else {
-        this.items[i-1]={ title: 'emptystar',  icon: require('@/assets/starEmpty.png') };
-      }
-    }
-  }
-
 };
 </script>
 
