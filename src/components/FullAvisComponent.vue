@@ -29,7 +29,7 @@ export default {
   },
   methods: {
   },
-  created() {
+  mounted() {
     for (let i = 1; i < 6; i++) {
       if(this.note - 2*i>=0) {
         this.items.push({ title: 'fullstar',  icon: require('@/assets/starFull.png') });
