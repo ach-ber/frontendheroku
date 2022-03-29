@@ -3,7 +3,7 @@
     <p>{{date.substring(0,10).replace('-','/').replace('-','/')}} | {{company}}</p>
     <h2>{{title}}</h2>
     <div><img src="@/assets/LocationIcon.png">{{ university }}<img src="@/assets/SpecialityIcon.png">{{ speciality }}</div>
-    <p>{{avis}}</p>
+    <p>{{avis}}|{{note}}</p>
     <div>
       <img :src="items[0].icon">
       <img :src="items[1].icon">
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
   },
-  beforeMount() {
+  created() {
     for (let i = 1; i < 6; i++) {
       if(this.note - 2*i>=0) {
         this.items.push({ title: 'fullstar',  icon: require('@/assets/starFull.png') });
