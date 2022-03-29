@@ -2,7 +2,7 @@
   <section>
     
     <div class="success" v-if="completeSignIn">Submitted successfully!</div>
-    <FormKit id="formSignIn" v-model="formData" type="form" submit-label="SignIn" @submit="SignIn" >
+    <FormKit id="formSignIn" v-model="formData" type="form" submit-label="SignIn" @submit="SignIn">
       <h2>Sign In</h2>
       <FormKit name="email" label="Email address" validation="required|email|(500)email_exists" :validation-messages="{ email_exists: 'email adresse already used' }" :validation-rules="{ email_exists }" />
       <FormKit type="text" name="firstname" label="firstname" validation="required" />
@@ -59,10 +59,18 @@ export default {
 
     SignIn() {
         //router.push('/test');
-        axios.post(this.$store.state.URLAPI+'/createStudent',this.formData);
-        this.completeSignIn =true;
-        this.$formkit.reset('formSignIn');
-        router.go();
+        axios.post(this.$store.state.URLAPI+'/createStudent',{
+          "email":this.formData.email.toString(),
+          "firstname":this.formData.firstname.toString(),
+          "lastname":this.formData.lastname.toString(),
+          "university":this.formData.university,
+          "speciality":this.formData.speciality,
+          "password":this.formData.password.toString()
+        }).then(() => {
+          this.completeSignIn =true;
+          this.$formkit.reset('formSignIn');
+          router.go();
+        })
     }
   },
 
