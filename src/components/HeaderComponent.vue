@@ -9,7 +9,7 @@
       <router-link class="routerElement" to="/">Home</router-link>
       <router-link class="routerElement" to="/about">About</router-link>
       <a href="#footer" v-smooth-scroll>Contact</a>
-      <router-link v-if="!connected" class="routerElement" to="/SigninView">SignIn</router-link>
+      <router-link v-if="!connected" class="routerElement" to="/SigninView">Signin</router-link>
       <router-link v-if="!connected" class="routerElement" to="/LoginView">Login</router-link>
     </div>
     <div>

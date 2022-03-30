@@ -105,7 +105,7 @@ export default {
   background-color: white;
   opacity: 0.9;
   width: 260px;
-  height: 340px;
+  height: 360px;
   font-size: 24px;
   font-weight: 600;
   text-align: center;

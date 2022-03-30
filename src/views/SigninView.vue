@@ -58,6 +58,7 @@ export default {
 
     SignIn() {
         //router.push('/test');
+        // router.go();
         axios.post(this.$store.state.URLAPI+'/createStudent',{
           "email":this.formDataSign.email,
           "firstname":this.formDataSign.firstname,
@@ -67,7 +68,7 @@ export default {
           "password":this.formDataSign.password
         }).then(() => {
           this.completeSignIn =true;
-          router.go();
+          router.push('/LoginView');
         })
     }
   },

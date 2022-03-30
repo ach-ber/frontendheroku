@@ -4,7 +4,7 @@
     <div class="success" v-if="completeCompany">Submitted successfully!</div>
     <FormKit v-model="formDataAvis" type="form" id="formPublish" submit-label="Publish" @submit="Publish" v-if="publishside">
         <h2>Publish</h2>
-        <FormKit type="text" name="title" label="title" validation="required" />
+        <FormKit type="text" name="title" label="title" validation="required|length:5,30" validation-visibility="live"/>
         <FormKit type="textarea" name="avis" label="Décrivez votre stage !" validation="required" />
         <FormKit type="range"  name="note" label="note" min="0" max="10" />
         <FormKit type="date"  name="date" label="date" validation="required"/>
@@ -54,7 +54,8 @@ const company_exists = async function ({ value }) {
 </script>
 
 <script>
-//import router  from '../router';
+
+import router  from '../router';
 
 const axios = require("axios");
 
@@ -93,9 +94,12 @@ export default {
           headers: {
             'Authorization': `Basic ${sessionStorage.getItem('token')}` 
           }
+        }).then(() => {
+          this.completePublish = true;
+          this.$formkit.reset('formPublish');
+          router.push('/AccountView');
         })
-        this.completePublish = true;
-        this.$formkit.reset('formPublish');
+        
         
     },
     Add() {
@@ -116,7 +120,6 @@ export default {
   beforeCreate() {
     axios.get(this.$store.state.URLAPI+'/company').then(response => this.companies = (response.data))
   },
-
 
 };
 </script>
