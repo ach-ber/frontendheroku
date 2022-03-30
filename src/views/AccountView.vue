@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       dataAvis:[],
-      urlAvis:'http://localhost:8081/#/AvisView/',
+      urlAvis:'https://feheroku.herokuapp.com/#/AvisView/',
       dataStudent:'',
       vide:false,
     }

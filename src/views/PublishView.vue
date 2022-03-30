@@ -32,6 +32,8 @@
 
 <script setup>
 
+
+
 const company_exists = async function ({ value }) {
     let rep = [];
     await axios.get('https://projetwebapi.herokuapp.com/api/company').then((response) => {
@@ -52,7 +54,7 @@ const company_exists = async function ({ value }) {
 </script>
 
 <script>
-
+//import router  from '../router';
 
 const axios = require("axios");
 
@@ -68,7 +70,7 @@ export default {
         completeCompany:false,
         companies:[],
         company: [],
-        formDataAvis:"test",
+        
     }
   },
   methods: {
@@ -94,7 +96,7 @@ export default {
         })
         this.completePublish = true;
         this.$formkit.reset('formPublish');
-        //router.push('/test');
+        
     },
     Add() {
         axios.post(this.$store.state.URLAPI+'/createcompany',this.formDataCompany,
@@ -102,12 +104,16 @@ export default {
           headers: {
             'Authorization': `Basic ${sessionStorage.getItem('token')}` 
           }
-        });
-        this.completeCompany = true;
-        this.$formkit.reset('formcompany');
+        }).then(() => {
+          axios.get(this.$store.state.URLAPI+'/company').then(response => this.companies = (response.data));
+          this.completeCompany = true;
+          this.$formkit.reset('formcompany');
+          this.publishside = true;
+        })
+        
     }
   },
-  updated() {
+  beforeCreate() {
     axios.get(this.$store.state.URLAPI+'/company').then(response => this.companies = (response.data))
   },
 

@@ -67,7 +67,7 @@ export default {
         //() => {for (const element of this.companies) {this.stateList.push({label:element.name_company,value:element.id_company})}})
   },
   created() {
-    axios.get(this.$store.state.URLAPI+'/student/2/avis/'+this.$route.params.id).then(response => 
+    axios.get(this.$store.state.URLAPI+'/student/'+this.$store.state.ID+'/avis/'+this.$route.params.id).then(response => 
     {this.test = (response.data[0]);
     this.formDataAvis.title = this.test.title;
     this.formDataAvis.note = this.test.note;
