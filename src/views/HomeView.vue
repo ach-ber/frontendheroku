@@ -1,7 +1,7 @@
 <template>
   
   <div class="home">
-    <h1>Retrouvez tous less avis</h1>
+    <h1>Retrouvez tous les avis</h1>
     
     <SearchBar/>
     <section>
@@ -10,7 +10,7 @@
       </div>
       <AvisComponent v-for="avis in dataBestavis" :title="avis.title_avis" :company="avis.name_company" :date="avis.date_avis.substring(0,10).replace('-','/').replace('-','/')" :note="avis.note_avis" :key="avis.id_avis" :id="avis.id_avis" :avis="avis.text_avis.substring(0,300).concat(' ...')"  v-bind:href="urlAvis+avis.id_avis"/>
       <div>
-        <h2>Récemment posté</h2>
+        <h2>Récemment postés</h2>
       </div>
       <AvisComponent v-for="avis in dataRecentavis" :title="avis.title_avis" :company="avis.name_company"  :date="avis.date_avis.substring(0,10).replace('-','/').replace('-','/')" :note="avis.note_avis" :key="avis.id_avis" :id="avis.id_avis" :avis="avis.text_avis.substring(0,300).concat(' ...')"  v-bind:href="urlAvis+avis.id_avis"/>
     </section>
